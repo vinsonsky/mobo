@@ -1,0 +1,80 @@
+server:
+  port: 9010
+
+#redis配置
+spring:
+  redis:
+    #redis数据库索引(默认0)
+    database:  0
+    #redis数据库地址
+    host: 127.0.0.1
+    #redis端口号 默认6379
+    port: 6379
+    #redis 密码 默认为空
+    password:
+    #redis连接超时时间 单位毫秒，须在200或以上 否则报错
+    timeout: 200
+    #redis 连接池设置
+    jedis:
+      pool:
+        #最大连接数（默认为8，负数表示无限）
+        max-active: 8
+        # 最大空闲连接数（默认为8，负数表示无限）
+        max-idle: 8
+        # 最小空闲连接数（默认为0，该值只有为正数才有作用）
+        min-idle: 0
+        # 从连接池中获取连接最大等待时间（默认为-1，单位为毫秒，负数表示无限）
+        max-wait: -1
+
+#mybatis配置
+mybatis:
+  #配置实体类所在的包
+  type-aliases-package: com.mobo.backstage.dao.domain
+  #配置mapper.xml所在的包
+  mapperLocations: classpath:mappers/*.xml
+
+#mq 配置
+mq:
+  ip: 127.0.0.1
+  user: admin
+  password: 123456
+  port: 5672
+  onOfConsumer: 20
+  interval: 1000
+  threadCount: 1
+  msgCount: 16
+
+druid:
+  type: com.alibaba.druid.pool.DruidDataSource
+  master:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rds56b2e321604zc4w1wo.mysql.rds.aliyuncs.com:3306/hanmapos_test?useUnicode=true&characterEncoding=UTF-8
+    username: suoyasoft
+    password: 1qaz2wsx
+    initial-size: 5
+    min-idle: 1
+    max-active: 100
+    test-on-borrow: true
+    cachePrepStmts: true #开启二级缓存
+  slave:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://rds56b2e321604zc4w1wo.mysql.rds.aliyuncs.com:3306/hanmapos_test2?useUnicode=true&characterEncoding=UTF-8
+    username: suoyasoft
+    password: 1qaz2wsx
+    initial-size: 5
+    min-idle: 1
+    max-active: 100
+    test-on-borrow: true
+    cachePrepStmts: true #开启二级缓存
+  slave2:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://rds56b2e321604zc4w1wo.mysql.rds.aliyuncs.com:3306/hanma_test4?useUnicode=true&characterEncoding=UTF-8
+      username: suoyasoft
+      password: 1qaz2wsx
+      initial-size: 5
+      min-idle: 1
+      max-active: 100
+      test-on-borrow: true
+      cachePrepStmts: true #开启二级缓存
+
+

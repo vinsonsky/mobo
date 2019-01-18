@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mobo.backstage.dao.mapper.RscSysUserMapper">
+
+    <insert id="insertRscSysUser" parameterType="com.mobo.backstage.dao.domain.RscSysUser">
+      INSERT INTO rsc_sys_user(userid,logonname,usercnname,status,mobile)
+      VALUES (#{userid},#{logonname},#{usercnname},#{status},#{mobile})
+    </insert>
+
+    <select id="selectRscSysUser" parameterType="java.lang.String" resultType="com.mobo.backstage.dao.domain.RscSysUser">
+      SELECT * FROM rsc_sys_user WHERE mobile=#{mobile}
+    </select>
+</mapper>
